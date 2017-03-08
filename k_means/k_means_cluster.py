@@ -70,6 +70,7 @@ plt.show()
 '''
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
+
 k_cluster = KMeans(n_clusters = 2)
 k_cluster.fit(finance_features)
 pred = k_cluster.labels_ 
@@ -78,7 +79,15 @@ colors = ["b", "c", "k", "m", "g"]
 fig = plt.figure()
 ax = fig.add_subplot(111, projection = '3d')
 for ii, pp in enumerate(pred): 
-	ax.scatter(finance_features[ii][0], finance_features[ii][1], color = colors[pred[ii]])
+	ax.scatter(finance_features[ii][0], finance_features[ii][1], 
+				finance_features[ii][2], color = colors[pred[ii]])
+
+'''
+ax.set_xlim(finance_features[0].min(), finance_features[0].max())
+ax.set_ylim(finance_features[1].min(), finance_features[1].max())
+ax.set_ylim(finance_features[2].min(), finance_features[2].max())
+'''
+
 ax.set_xlabel(feature_1)
 ax.set_ylabel(feature_2)
 ax.set_zlabel(feature_3)
